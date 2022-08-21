@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   navBar,
   mainBody,
@@ -51,6 +51,7 @@ const Home = React.forwardRef((props, ref) => {
         <Project
           heading={repos.heading}
           username={repos.gitHubUsername}
+          organization={repos.organization}
           length={repos.reposLength}
           specfic={repos.specificRepos}
         />
@@ -79,7 +80,7 @@ const App = () => {
   const titleRef = React.useRef();
 
   return (
-    <HashRouter basename={process.env.PUBLIC_URL + "/"}>
+    <BrowserRouter basename={process.env.PUBLIC_URL + "/"}>
       {navBar.show && <Navbar ref={titleRef} />}
       <Routes>
         <Route path="/" exact element={<Home ref={titleRef} />} />
@@ -95,7 +96,7 @@ const App = () => {
           />
         )}
       </Footer>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
